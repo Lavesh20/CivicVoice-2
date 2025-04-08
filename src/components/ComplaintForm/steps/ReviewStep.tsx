@@ -120,7 +120,7 @@ const ReviewStep: React.FC = () => {
       
       // Send data to backend API
       const response = await axios.post(
-        'http://localhost:3000/api/complaints/submit',       
+        'https://civic-voice-backend.onrender.com/api/complaints/submit',       
         submissionData,
         config
       );
