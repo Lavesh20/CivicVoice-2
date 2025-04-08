@@ -97,7 +97,7 @@ const StatusTimeline: React.FC<StatusTimelineProps> = ({
         <div className="flex items-center gap-2">
           <div className="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full flex items-center gap-1 text-sm">
             <Clock className="h-4 w-4" />
-            <span>Est. completion: June 15, 2023</span>
+            <span>Est. completion: June 15, 2025</span>
           </div>
         </div>
       </div>
