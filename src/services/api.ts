@@ -47,12 +47,15 @@ export interface Complaint {
 
 // Create an API client
 const apiClient = axios.create({
-  baseURL: '/api', // This will be handled by our proxy configuration
+  baseURL: import.meta.env.MODE === 'development'
+    ? '/api' // local, works with proxy
+    : 'https://civic-voice-server.onrender.com/api', // production
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
   },
 });
+
 
 // Fetch complaints from our API
 export const fetchComplaintsFromApi = async (): Promise<Complaint[]> => {
