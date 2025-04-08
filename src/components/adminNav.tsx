@@ -211,19 +211,12 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Logout Function
-  const handleLogout = () => {
-    localStorage.removeItem("token"); // Clear stored user token
-    localStorage.removeItem("user"); // Remove user details if stored
-    navigate("/login"); // Redirect to login page
-  };
-
   // Determine which buttons to show based on the current path
   const getNavButtons = () => {
     if (location.pathname === "/analyse" || location.pathname === "/admin") {
-      return ["Complaints", "Log Out"];
+      return ["Complaints"];
     } else if (location.pathname === "/complaints") {
-      return ["Analyse", "Log Out"];
+      return ["Analyse"];
     }
     return [];
   };
@@ -249,29 +242,17 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center justify-center space-x-8">
-          {getNavButtons().map((item) =>
-            item === "Log Out" ? (
-              <button
-                key={item}
-                onClick={handleLogout}
-                className="px-5 py-2 bg-red-600 text-white font-semibold rounded-lg shadow-md 
-                           hover:bg-red-700 transition-all duration-300 
-                           inline-flex items-center justify-center"
-              >
-                {item}
-              </button>
-            ) : (
-              <a
-                key={item}
-                href={`/${item.toLowerCase().replace(/\s/g, "-")}`}
-                className="px-5 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md 
-                           hover:bg-blue-700 transition-all duration-300 
-                           inline-flex items-center justify-center"
-              >
-                {item}
-              </a>
-            )
-          )}
+          {getNavButtons().map((item) => (
+            <a
+              key={item}
+              href={`/${item.toLowerCase().replace(/\s/g, "-")}`}
+              className="px-5 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md 
+                         hover:bg-blue-700 transition-all duration-300 
+                         inline-flex items-center justify-center"
+            >
+              {item}
+            </a>
+          ))}
         </div>
 
         {/* Mobile Menu Button */}
@@ -287,30 +268,16 @@ const Navbar = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden px-4 py-4 bg-white/10 backdrop-blur-md animate-fade-in">
           <div className="flex flex-col space-y-4">
-            {getNavButtons().map((item) =>
-              item === "Log Out" ? (
-                <button
-                  key={item}
-                  onClick={() => {
-                    handleLogout();
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className="w-full px-4 py-2 bg-red-600 text-white font-semibold rounded-md shadow-md 
-                             hover:bg-red-700 transition-all duration-300"
-                >
-                  {item}
-                </button>
-              ) : (
-                <a
-                  key={item}
-                  href={`/${item.toLowerCase().replace(/\s/g, "-")}`}
-                  className="text-foreground/90 py-2 px-4 hover:bg-white/10 rounded-md transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {item}
-                </a>
-              )
-            )}
+            {getNavButtons().map((item) => (
+              <a
+                key={item}
+                href={`/${item.toLowerCase().replace(/\s/g, "-")}`}
+                className="text-foreground/90 py-2 px-4 hover:bg-white/10 rounded-md transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {item}
+              </a>
+            ))}
           </div>
         </div>
       )}
