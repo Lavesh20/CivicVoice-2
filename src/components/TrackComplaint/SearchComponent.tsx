@@ -51,7 +51,7 @@ const SearchComponent = () => {
     if (searchValue.trim()) {
       try {
         
-        const res = await axios.post(`http://localhost:3000/api/complaints/validate/${searchValue}`);
+        const res = await axios.post(`https://civic-voice-backend.onrender.com/api/complaints/validate/${searchValue}`);
 
         if (res.data.valid) {
           navigate(`/track/${searchValue}`);
