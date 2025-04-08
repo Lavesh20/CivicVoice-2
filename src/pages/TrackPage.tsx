@@ -34,7 +34,7 @@ const TrackPage: React.FC = () => {
     setError(null);
 
     axios
-      .post(`http://localhost:3000/api/complaints/track`, { referenceNumber })
+      .post(`https://civic-voice-backend.onrender.com/api/complaints/track`, { referenceNumber })
       .then((response) => {
         console.log(response.data)
         setComplaintData(response.data);
