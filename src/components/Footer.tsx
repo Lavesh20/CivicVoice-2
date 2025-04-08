@@ -16,7 +16,6 @@ const Footer = () => {
     { name: 'Home', href: '/home' },
     { name: 'Submit Complaint', href: '/submit' },
     { name: 'Track Status', href: '/track' },
-    { name: 'Admin Login', href: '/login' },
     { name: 'About Us', href: '#' },
     { name: 'Contact', href: '#' }
   ];
